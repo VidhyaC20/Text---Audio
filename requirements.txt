@@ -1,0 +1,8 @@
+python==3.10
+python-dotenv==1.2.1
+langchain==1.2.0
+langchain-core==1.2.5
+langchain-openai==1.1.6
+openai=2.14
+pip==25.3
+flask
