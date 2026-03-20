@@ -236,21 +236,20 @@ client = OpenAI(api_key=api_key)
 llm = ChatOpenAI(
     model="gpt-4o-mini",
     temperature=0,
-    max_tokens=3000,
+    max_tokens=800,
     api_key=api_key
 )
 
 prompt = ChatPromptTemplate.from_template(
-    """
+      """
     You are a professional storyteller and narrator.
-
-    Generate a detailed and complete narration about the topic.
-    Make it natural, clear, and suitable for audio.
-    Only deliver the narration.
+    Generate a clear narration about the topic in around 300 to 500 words.
+    Keep it concise, natural, and suitable for audio.
 
     Topic:
     {topic}
     """
+
 )
 
 chain = prompt | llm
@@ -276,7 +275,7 @@ def text_to_audio(text: str, output_file: str):
     with client.audio.speech.with_streaming_response.create(
         model="gpt-4o-mini-tts",
         voice="nova",
-        input=text[:4000]
+        input=text[:2000]
     ) as response:
         response.stream_to_file(output_file)
 
