@@ -7,6 +7,7 @@ from flask import Flask, request, render_template_string, send_from_directory, u
 from openai import OpenAI
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
+import os
 
 warnings.filterwarnings("ignore")
 
@@ -16,12 +17,19 @@ load_dotenv()
 # Flask app
 app = Flask(__name__)
 
+os.makedirs("static/audio", exist_ok=True)
+
 # Folder to store generated audio
 OUTPUT_DIR = Path("static/audio")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
+
+api_key=os.getenv("OPENAI_API_KEY")
 # OpenAI client
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = OpenAI(api_key)
+
+if not api_key:
+    raise ValueError("OPENAI_API_KEY is missing!")
 
 # LLM
 llm = ChatOpenAI(
