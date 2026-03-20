@@ -1,9 +1,17 @@
-python==3.10
-python-dotenv==1.2.1
-langchain==1.2.0
-langchain-core==1.2.5
-langchain-openai==1.1.6
-openai=2.14
-pip==25.3
-flask
-gunicorn 
+# #python==3.10
+# python-dotenv==1.2.1
+# langchain==1.2.0
+# langchain-core==1.2.5
+# langchain-openai==1.1.6
+# openai=2.14
+# #pip==25.3
+# flask
+# gunicorn 
+
+python-dotenv==1.0.1
+langchain==0.2.14
+langchain-core==0.2.36
+langchain-openai==0.1.22
+openai==1.40.6
+flask==3.0.3
+gunicorn==22.0.0
