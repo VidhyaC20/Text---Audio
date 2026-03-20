@@ -23,13 +23,12 @@ app = Flask(__name__)
 OUTPUT_DIR = Path("static/audio")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-
-api_key=os.getenv("OPENAI_API_KEY")
-# OpenAI client
-client = OpenAI(api_key)
+api_key = os.getenv("OPENAI_API_KEY")
 
 if not api_key:
     raise ValueError("OPENAI_API_KEY is missing!")
+
+client = OpenAI(api_key=api_key)
 
 # LLM
 llm = ChatOpenAI(
